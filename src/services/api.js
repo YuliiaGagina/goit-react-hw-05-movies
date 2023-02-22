@@ -24,14 +24,14 @@ export const getFilmsByQuery = async (query) => {
         params: {query : query,}
     });
 
-    console.log(data);
+   
     return data;
 }
 
 export const getFilmInformation = async (movieId) =>{
     const {data} = await axios.get(`/movie/${movieId}`);
 
-    console.log(data);
+ 
     return data;
 }
 
@@ -40,14 +40,14 @@ export const getInfoAboutActors = async (movieId) =>{
         params : {per_page: 20, page: 1}
     });
 
-    console.log(data);
+   
     return data;
 }
 
 export const getRequersReview = async (movieId) =>{
     const {data} = await axios.get(`/movie/${movieId}/reviews`);
 
-    console.log(data);
+    
     return data;
 }
 

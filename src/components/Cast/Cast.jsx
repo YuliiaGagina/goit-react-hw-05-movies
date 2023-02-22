@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation, Link, Routes, Route } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { getInfoAboutActors } from 'services/api';
 import { Loader } from 'components/Loader/Loader';
 import { Wrap } from './Cast.styled';
-import { Tittle, Item } from './Cast.styled';
+import { Tittle, Item, Warning } from './Cast.styled';
 export const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
@@ -19,7 +19,7 @@ export const Cast = () => {
       .catch(error => error.message).finally(setIsLoading(false));
   }, [movieId]);
 
-  console.log(cast);
+  
 
   return (
     <div className="cast">
@@ -28,7 +28,7 @@ export const Cast = () => {
         <>
           {' '}
           <Tittle>Actors are: </Tittle>
-          <Wrap>
+          {cast.length > 0 ?   <Wrap>
             {cast.slice(0, 10).map(actor => (
               <Item key={actor.id}>
                 <img
@@ -39,7 +39,8 @@ export const Cast = () => {
                 <p>{actor.name}</p>
               </Item>
             ))}
-          </Wrap>
+          </Wrap>  : <Warning>Sorry my friend, we can't give you any information!!!</Warning>}
+        
         </>
       )}
     </div>

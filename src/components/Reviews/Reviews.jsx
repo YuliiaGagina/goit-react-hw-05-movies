@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation, Link, Routes, Route } from "react-router-dom";
+import { useParams, } from "react-router-dom";
 import { getRequersReview } from "services/api";
 import { Loader } from "components/Loader/Loader";
-import { Container, Tittle } from "./Reviews.styled"; 
+import { Container, Tittle, Warning } from "./Reviews.styled"; 
 export const Reviews = () =>{
     const {movieId} = useParams();
     const [review, setReview] = useState([]);
@@ -23,7 +23,7 @@ export const Reviews = () =>{
            
              {isLoading && <Loader />}
             <Tittle>Reviews are: </Tittle>
-            {review.length <= 0 && <p>Sorry, there is no reviews!</p>}
+            {review.length <= 0 && <Warning>Sorry, there is no reviews!</Warning>}
             {review && review.map( item => (
                 <Container key={item.name}>
                 <h3>{item.author}</h3>

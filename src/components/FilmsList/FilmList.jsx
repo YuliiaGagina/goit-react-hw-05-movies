@@ -1,21 +1,27 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
 import { List } from './FilmList.styled';
+import { Linkk } from './FilmList.styled';
 
+export const FilmList = ({ popularFilms }) => {
+  const location = useLocation();
 
-
-
-export const MovieList = ({popularFilms}) =>{
-    const location = useLocation();
-
-
-
-    return(
-        <>
-             <List>
-                {popularFilms.map(film => <li key={film.id}><Link to={`/movies/${film.id}`} state={{from: location}}>{film.title}</Link></li> 
-               )}
-               
-            </List>
-        </>
-    )
-}
+  return (
+    <>
+      {popularFilms && (
+        <List>
+          {popularFilms.map(film => (
+            <Link to={`/movies/${film.id}`}  key={film.id}>
+              <Linkk  state={{ from: location }}>
+                {film.title || film.name}
+              </Linkk>
+              <img width='300'
+                src={`https://image.tmdb.org/t/p/w500${film.backdrop_path}`}
+                alt=""
+              />
+            </Link>
+          ))}
+        </List>
+      )}
+    </>
+  );
+};

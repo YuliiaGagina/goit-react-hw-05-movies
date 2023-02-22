@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation, Link, Routes, Route } from "react-router-dom";
+
 import { getFilmInformation } from "services/api";
+import { useParams, useLocation, Routes, Route } from "react-router-dom";
 import { Cast } from "components/Cast/Cast";
 import { Reviews } from "components/Reviews/Reviews";
-import  {StyledNavLink } from '../App.styled';
+import  {StyledNavLin } from '../App.styled';
 import { Wrapper, Section, ButtonLink, ImageWrap, Title } from "./FilmDetails.styled";
 
  const Film = () =>{
-const [film, setFilm] = useState({});
+const [film, setFilm] = useState(null);
 const { movieId} = useParams();
 const location = useLocation();
 
@@ -20,28 +21,28 @@ useEffect(() => {
 }, [movieId]);
 
 
-// film.genres.map(item => item.name).join(', ')
+
 
     return (
         <Section>
             <ButtonLink to={goBackLink}>Go back</ButtonLink>
-            <Wrapper>
+          {film &&  <Wrapper>
             <ImageWrap>
             <img  width="600" src={`https://image.tmdb.org/t/p/w500${film.poster_path
 }`} alt="film.title" />
             </ImageWrap>
             <div>
-            <h1>{film.title} ({(film.release_date)})</h1>
+            <h1>{film.title} ({(film.release_date.slice(0, 4))})</h1>
            
             <p> <b>User score:</b>  {Math.round(film.popularity)}%</p>
             <p> <b> Overview: </b> {film.overview}</p>
-            <p> <b>Genres: </b> {}</p>
+            <p> <b>Genres: </b> {film.genres.map(item => item.name).join(', ')}</p>
             </div>
-            </Wrapper>
+            </Wrapper>}
 
             <Title>Additional Information</Title>
-            <StyledNavLink to="cast">Cast</StyledNavLink>
-            <StyledNavLink to="reviews">Reviews</StyledNavLink>
+            <StyledNavLin state={{from: goBackLink}} to="cast">Cast</StyledNavLin>
+            <StyledNavLin state={{from: goBackLink}} to="reviews">Reviews</StyledNavLin>
 
         
 

@@ -14,4 +14,10 @@ export const Wrap = styled.nav`
 
   export const Item = styled.li`
   list-style-type: none;
- `
+ `;
+  export const Warning = styled.p`
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  `
