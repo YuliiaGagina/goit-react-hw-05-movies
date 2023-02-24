@@ -9,7 +9,7 @@ gap: 15px;
 padding-top: 10px;
 `
 
-export const Linkk = styled(Link)`
+export const StyledLinkk = styled(Link)`
 display: block;
 text-align: center;
 margin-top: 10px;
