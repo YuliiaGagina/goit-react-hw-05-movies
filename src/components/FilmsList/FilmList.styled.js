@@ -17,3 +17,6 @@ padding: 10px;
 font-size: 16px;
 color: #8c6cbd;
 `;
+
+export const FilmTitle = styled.p`
+margin-bottom: 10px;`
