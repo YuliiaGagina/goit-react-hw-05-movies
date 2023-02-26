@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import {  useLocation } from 'react-router-dom';
 import { List } from './FilmList.styled';
 import { StyledLinkk, FilmTitle } from './FilmList.styled';
 
